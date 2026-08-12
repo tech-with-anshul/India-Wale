@@ -48,7 +48,7 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, playlistOpen,
 
   return (
     <div
-      style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}
+      style={{ position: 'relative', width: '100%', height: '100dvh', overflow: 'hidden' }}
       aria-label="Indian Independence Day Experience"
     >
       {/* ── Background image (moves with subtle parallax) ── */}

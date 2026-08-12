@@ -539,6 +539,18 @@ body {
 }
 
 /* ─────────────────────────────────────────────────
+   Music Player Wrapper
+───────────────────────────────────────────────── */
+.music-player-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(480px, calc(100vw - 24px));
+  bottom: 28px;
+}
+
+/* ─────────────────────────────────────────────────
    Mini player (cinematic mode)
 ───────────────────────────────────────────────── */
 .mini-player {
@@ -556,6 +568,11 @@ body {
 @media (max-width: 767px) {
   .play-btn { width: 42px; height: 42px; }
   .volume-slider { width: 64px; }
+
+  /* Lift the player up on mobile to avoid iOS indicator bar and browser controls */
+  .music-player-wrapper {
+    bottom: 74px !important;
+  }
 
   /* Centering the heading on mobile */
   .heading-container {

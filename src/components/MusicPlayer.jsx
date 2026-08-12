@@ -125,16 +125,7 @@ export default function MusicPlayer({
   }
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        bottom: '28px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: 'min(480px, calc(100vw - 28px))',
-        zIndex: 60,
-      }}
-    >
+    <div className="music-player-wrapper">
       <div className="animate-slideUp delay-1400 opacity-0" style={{ width: '100%' }}>
         <div
           id="music-player"
