@@ -145,7 +145,6 @@ export default function Navigation({ cinematicMode, onBharatClick, onVandeClick 
             onClick={handleBharat}
             aria-label="भारत के नाम — click for a patriotic quote"
           >
-            <span role="img" aria-label="Indian flag">🇮🇳</span>
             <span>भारत के नाम</span>
           </button>
         </div>

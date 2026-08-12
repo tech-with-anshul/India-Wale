@@ -19,6 +19,15 @@ export const songs = [
   },
   {
     "id": 3,
+    "title": "Jana Gana Mana - Full Orchestral Version",
+    "artist": "A.R. Rahman",
+    "category": "Desh Bhakti",
+    "year": "2005",
+    "cover": "/music/covers/a_r__rahman_-_jana_gana_mana_-_full_orchestral_version.jpg",
+    "audio": "/music/A.R. Rahman - Jana Gana Mana - Full Orchestral Version.mp3"
+  },
+  {
+    "id": 4,
     "title": "Maa Tujhe Salaam",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -27,7 +36,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman - Maa Tujhe Salaam.mp3"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Revival (Vande Mataram)",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -36,7 +45,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman - Revival (Vande Mataram).mp3"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Yeh Jo Des Hai Tera",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -45,7 +54,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman - Yeh Jo Des Hai Tera.mp3"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Rang De Basanti",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -54,7 +63,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Daler Mehndi, K. S. Chithra - Rang De Basanti.mp3"
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "Bharat Humko Jaan Se Pyara Hai",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -63,7 +72,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Hariharan - Bharat Humko Jaan Se Pyara Hai.mp3"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "Sarfaroshi Ki Tamanna - Sad Version",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -72,7 +81,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Sonu Nigam, Hariharan, Sameer Anjaan - Sarfaroshi Ki Tamanna - Sad Version.mp3"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "Mera Rang De Basanti",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -81,7 +90,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Sonu Nigam, Manmohan Waris, Sameer Anjaan - Mera Rang De Basanti.mp3"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "Chale Chalo",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -90,7 +99,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Srinivas - Chale Chalo.mp3"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Jagaao Mere Des Ko",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -99,7 +108,7 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Suchi, Blaaze - Jagaao Mere Des Ko.mp3"
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "Des Mere Des",
     "artist": "A.R. Rahman",
     "category": "Desh Bhakti",
@@ -108,7 +117,34 @@ export const songs = [
     "audio": "/music/A.R. Rahman, Sukhwinder Singh, Sameer Anjaan - Des Mere Des.mp3"
   },
   {
-    "id": 13,
+    "id": 14,
+    "title": "E Bharate Rakho Nitya",
+    "artist": "Anirudhya Sasha Ghosal",
+    "category": "Desh Bhakti",
+    "year": "2012",
+    "cover": "/music/covers/anirudhya_sasha_ghosal_-_e_bharate_rakho_nitya.jpg",
+    "audio": "/music/Anirudhya Sasha Ghosal - E Bharate Rakho Nitya.mp3"
+  },
+  {
+    "id": 15,
+    "title": "Keno Cheye Achho Go Ma",
+    "artist": "Anirudhya Sasha Ghosal",
+    "category": "Desh Bhakti",
+    "year": "2012",
+    "cover": "/music/covers/anirudhya_sasha_ghosal_-_keno_cheye_achho_go_ma.jpg",
+    "audio": "/music/Anirudhya Sasha Ghosal - Keno Cheye Achho Go Ma.mp3"
+  },
+  {
+    "id": 16,
+    "title": "Patriot",
+    "artist": "Arijit Singh",
+    "category": "Desh Bhakti",
+    "year": "2022",
+    "cover": "/music/covers/arijit_singh_-_patriot.jpg",
+    "audio": "/music/Arijit Singh - Patriot.mp3"
+  },
+  {
+    "id": 17,
     "title": "Sabarmati Ke Sant Tune Kar Diya Kamal",
     "artist": "Asha Bhosle",
     "category": "Desh Bhakti",
@@ -117,7 +153,25 @@ export const songs = [
     "audio": "/music/Asha Bhosle, Hemant Kumar - Sabarmati Ke Sant Tune Kar Diya Kamal.mp3"
   },
   {
-    "id": 14,
+    "id": 18,
+    "title": "India My Love",
+    "artist": "Bickram Ghosh",
+    "category": "Desh Bhakti",
+    "year": "2009",
+    "cover": "/music/covers/bickram_ghosh_-_india_my_love.jpg",
+    "audio": "/music/Bickram Ghosh - India My Love.mp3"
+  },
+  {
+    "id": 19,
+    "title": "O Amar Desher Mati",
+    "artist": "Debojyoti Mishra",
+    "category": "Desh Bhakti",
+    "year": "2015",
+    "cover": "/music/covers/debojyoti_mishra_-_o_amar_desher_mati.jpg",
+    "audio": "/music/Debojyoti Mishra - O Amar Desher Mati.mp3"
+  },
+  {
+    "id": 20,
     "title": "Mere Dushman Mere Bhai - From \"Border\"",
     "artist": "Hariharan",
     "category": "Desh Bhakti",
@@ -126,7 +180,7 @@ export const songs = [
     "audio": "/music/Hariharan - Mere Dushman Mere Bhai - From 'Border'.mp3"
   },
   {
-    "id": 15,
+    "id": 21,
     "title": "Des Mera",
     "artist": "Indian Ocean",
     "category": "Desh Bhakti",
@@ -135,7 +189,7 @@ export const songs = [
     "audio": "/music/Indian Ocean - Des Mera.mp3"
   },
   {
-    "id": 16,
+    "id": 22,
     "title": "O Mere Desh Ki Mati",
     "artist": "Indrajit Das Gupta",
     "category": "Desh Bhakti",
@@ -144,7 +198,7 @@ export const songs = [
     "audio": "/music/Indrajit Das Gupta - O Mere Desh Ki Mati.mp3"
   },
   {
-    "id": 17,
+    "id": 23,
     "title": "Junoon",
     "artist": "Javed Ali",
     "category": "Desh Bhakti",
@@ -153,7 +207,16 @@ export const songs = [
     "audio": "/music/Javed Ali - Junoon.mp3"
   },
   {
-    "id": 18,
+    "id": 24,
+    "title": "Shaheedi",
+    "artist": "Javed Ali",
+    "category": "Desh Bhakti",
+    "year": "2021",
+    "cover": "/music/covers/javed_ali_-_shaheedi.jpg",
+    "audio": "/music/Javed Ali - Shaheedi.mp3"
+  },
+  {
+    "id": 25,
     "title": "Hum Honge Kamyab",
     "artist": "Javed Ali",
     "category": "Desh Bhakti",
@@ -162,7 +225,7 @@ export const songs = [
     "audio": "/music/Javed Ali, Harshdeep Kaur, Kunal Ganjawala, Zubeen Garg, Usha Uthup - Hum Honge Kamyab.mp3"
   },
   {
-    "id": 19,
+    "id": 26,
     "title": "Jai Shivaji - Title Track",
     "artist": "Kailash Kher",
     "category": "Desh Bhakti",
@@ -171,7 +234,7 @@ export const songs = [
     "audio": "/music/Kailash Kher - Jai Shivaji - Title Track.mp3"
   },
   {
-    "id": 20,
+    "id": 27,
     "title": "I Love My India - Female Version",
     "artist": "Kavita Krishnamurthy",
     "category": "Desh Bhakti",
@@ -180,7 +243,7 @@ export const songs = [
     "audio": "/music/Kavita Krishnamurthy - I Love My India - Female Version.mp3"
   },
   {
-    "id": 21,
+    "id": 28,
     "title": "Jeete Hain Chal",
     "artist": "Kavita Seth",
     "category": "Desh Bhakti",
@@ -189,7 +252,7 @@ export const songs = [
     "audio": "/music/Kavita Seth - Jeete Hain Chal.mp3"
   },
   {
-    "id": 22,
+    "id": 29,
     "title": "Satyamev Jayate",
     "artist": "Keerthi Sagathia",
     "category": "Desh Bhakti",
@@ -198,7 +261,7 @@ export const songs = [
     "audio": "/music/Keerthi Sagathia, Ram Sampath - Satyamev Jayate.mp3"
   },
   {
-    "id": 23,
+    "id": 30,
     "title": "Mera Mulk Mera Desh",
     "artist": "Kumar Sanu",
     "category": "Desh Bhakti",
@@ -207,7 +270,7 @@ export const songs = [
     "audio": "/music/Kumar Sanu, Aditya Narayan, Anu Malik, Javed Akhtar - Mera Mulk Mera Desh.mp3"
   },
   {
-    "id": 24,
+    "id": 31,
     "title": "Ae Mere Wattan Ke Logo",
     "artist": "Lata Mangeshkar",
     "category": "Desh Bhakti",
@@ -216,7 +279,7 @@ export const songs = [
     "audio": "/music/Lata Mangeshkar - Ae Mere Wattan Ke Logo.mp3"
   },
   {
-    "id": 25,
+    "id": 32,
     "title": "Aao Bachcho Tumhen Dikhayen",
     "artist": "Lata Mangeshkar",
     "category": "Desh Bhakti",
@@ -225,7 +288,7 @@ export const songs = [
     "audio": "/music/Lata Mangeshkar, Adinath Mangeshkar, Hemant Kumar - Aao Bachcho Tumhen Dikhayen.mp3"
   },
   {
-    "id": 26,
+    "id": 33,
     "title": "Aisa Des Hai Mera",
     "artist": "Madan Mohan",
     "category": "Desh Bhakti",
@@ -234,7 +297,7 @@ export const songs = [
     "audio": "/music/Madan Mohan, Lata Mangeshkar, Udit Narayan, Gurdas Maan, Pritha Mazumdar, Javed Akhtar - Aisa Des Hai Mera.mp3"
   },
   {
-    "id": 27,
+    "id": 34,
     "title": "Bharat Ka Rahnewala Hoon",
     "artist": "Mahendra Kapoor",
     "category": "Desh Bhakti",
@@ -243,7 +306,7 @@ export const songs = [
     "audio": "/music/Mahendra Kapoor, Kalyanji-Anandji - Bharat Ka Rahnewala Hoon.mp3"
   },
   {
-    "id": 28,
+    "id": 35,
     "title": "Mere Desh Ki Dharti",
     "artist": "Mahendra Kapoor",
     "category": "Desh Bhakti",
@@ -252,7 +315,7 @@ export const songs = [
     "audio": "/music/Mahendra Kapoor, Kalyanji-Anandji - Mere Desh Ki Dharti.mp3"
   },
   {
-    "id": 29,
+    "id": 36,
     "title": "Bharat Amar Bharatbarsha",
     "artist": "Manna Dey",
     "category": "Desh Bhakti",
@@ -261,7 +324,7 @@ export const songs = [
     "audio": "/music/Manna Dey - Bharat Amar Bharatbarsha.mp3"
   },
   {
-    "id": 30,
+    "id": 37,
     "title": "Ae Mere Pyare Watan",
     "artist": "Manna Dey",
     "category": "Desh Bhakti",
@@ -270,7 +333,7 @@ export const songs = [
     "audio": "/music/Manna Dey, Salil Chowdhury - Ae Mere Pyare Watan.mp3"
   },
   {
-    "id": 31,
+    "id": 38,
     "title": "Ae Watan Ae Watan - Fast",
     "artist": "Mohammed Rafi",
     "category": "Desh Bhakti",
@@ -279,7 +342,7 @@ export const songs = [
     "audio": "/music/Mohammed Rafi - Ae Watan Ae Watan - Fast.mp3"
   },
   {
-    "id": 32,
+    "id": 39,
     "title": "Woh Bharat Desh Hai Mera",
     "artist": "Mohammed Rafi",
     "category": "Desh Bhakti",
@@ -288,7 +351,7 @@ export const songs = [
     "audio": "/music/Mohammed Rafi - Woh Bharat Desh Hai Mera.mp3"
   },
   {
-    "id": 33,
+    "id": 40,
     "title": "Aankhein Milayenge Darr Se",
     "artist": "Mohan Kannan",
     "category": "Desh Bhakti",
@@ -297,7 +360,16 @@ export const songs = [
     "audio": "/music/Mohan Kannan, Neha Bhasin - Aankhein Milayenge Darr Se.mp3"
   },
   {
-    "id": 34,
+    "id": 41,
+    "title": "Ae Watan",
+    "artist": "Mohit Chauhan",
+    "category": "Desh Bhakti",
+    "year": "2021",
+    "cover": "/music/covers/mohit_chauhan_-_ae_watan.jpg",
+    "audio": "/music/Mohit Chauhan - Ae Watan.mp3"
+  },
+  {
+    "id": 42,
     "title": "Hum Honge Kamyaab",
     "artist": "Mohit Lalwani",
     "category": "Desh Bhakti",
@@ -306,7 +378,7 @@ export const songs = [
     "audio": "/music/Mohit Lalwani, Bharat Kamal, Aditi Banerjee - Hum Honge Kamyaab.mp3"
   },
   {
-    "id": 35,
+    "id": 43,
     "title": "Mera Joota Hai Japani",
     "artist": "Mukesh",
     "category": "Desh Bhakti",
@@ -315,7 +387,16 @@ export const songs = [
     "audio": "/music/Mukesh - Mera Joota Hai Japani.mp3"
   },
   {
-    "id": 36,
+    "id": 44,
+    "title": "Anandaloke",
+    "artist": "Paroma Dasgupta",
+    "category": "Desh Bhakti",
+    "year": "2020",
+    "cover": "/music/covers/paroma_dasgupta__kaizad_gherda_-_anandaloke.jpg",
+    "audio": "/music/Paroma Dasgupta, Kaizad Gherda - Anandaloke.mp3"
+  },
+  {
+    "id": 45,
     "title": "Azaadi Ke Liye",
     "artist": "Pritam",
     "category": "Desh Bhakti",
@@ -324,7 +405,7 @@ export const songs = [
     "audio": "/music/Pritam, Arijit Singh, TUSHAR JOSHI - Azaadi Ke Liye.mp3"
   },
   {
-    "id": 37,
+    "id": 46,
     "title": "Mere Watan - Sad",
     "artist": "Pritam",
     "category": "Desh Bhakti",
@@ -333,7 +414,7 @@ export const songs = [
     "audio": "/music/Pritam, Arijit Singh, TUSHAR JOSHI - Mere Watan - Sad.mp3"
   },
   {
-    "id": 38,
+    "id": 47,
     "title": "Watan Walo - Indian/Soundtrack Version",
     "artist": "Roop Kumar Rathod",
     "category": "Desh Bhakti",
@@ -342,7 +423,7 @@ export const songs = [
     "audio": "/music/Roop Kumar Rathod - Watan Walo - IndianSoundtrack Version.mp3"
   },
   {
-    "id": 39,
+    "id": 48,
     "title": "Hum Hai Indian",
     "artist": "Roop Kumar Rathod",
     "category": "Desh Bhakti",
@@ -351,7 +432,7 @@ export const songs = [
     "audio": "/music/Roop Kumar Rathod, Sonali Rathod - Hum Hai Indian.mp3"
   },
   {
-    "id": 40,
+    "id": 49,
     "title": "Mera Desh Hi Dharam",
     "artist": "Salim–Sulaiman",
     "category": "Desh Bhakti",
@@ -360,7 +441,7 @@ export const songs = [
     "audio": "/music/Salim–Sulaiman - Mera Desh Hi Dharam.mp3"
   },
   {
-    "id": 41,
+    "id": 50,
     "title": "Chak De India",
     "artist": "Salim–Sulaiman",
     "category": "Desh Bhakti",
@@ -369,7 +450,7 @@ export const songs = [
     "audio": "/music/Salim–Sulaiman, Sukhwinder Singh, Salim Merchant, Marianne D'Cruz, Jaideep Sahni - Chak De India.mp3"
   },
   {
-    "id": 42,
+    "id": 51,
     "title": "Sare Jahan Se Achha Hindustan Hamara",
     "artist": "Seema Mishra",
     "category": "Desh Bhakti",
@@ -378,7 +459,16 @@ export const songs = [
     "audio": "/music/Seema Mishra - Sare Jahan Se Achha Hindustan Hamara.mp3"
   },
   {
-    "id": 43,
+    "id": 52,
+    "title": "Bharat Mera Watan",
+    "artist": "Shankar Mahadevan",
+    "category": "Desh Bhakti",
+    "year": "2021",
+    "cover": "/music/covers/shankar_mahadevan__mangesh_chavan_-_bharat_mera_watan.jpg",
+    "audio": "/music/Shankar Mahadevan, Mangesh Chavan - Bharat Mera Watan.mp3"
+  },
+  {
+    "id": 53,
     "title": "Hindustan Hindustan - From \"Border\"",
     "artist": "Shankar Mahadevan",
     "category": "Desh Bhakti",
@@ -387,7 +477,7 @@ export const songs = [
     "audio": "/music/Shankar Mahadevan, Sonali Rathod, Kulbhushan Kharbanda - Hindustan Hindustan - From 'Border'.mp3"
   },
   {
-    "id": 44,
+    "id": 54,
     "title": "Hindustani (From \"Street Dancer 3D\")",
     "artist": "Shankar Mahadevan",
     "category": "Desh Bhakti",
@@ -396,7 +486,7 @@ export const songs = [
     "audio": "/music/Shankar Mahadevan, Udit Narayan, Harsh Upadhyay, Shankar-Ehsaan-Loy - Hindustani (From 'Street Dancer 3D').mp3"
   },
   {
-    "id": 45,
+    "id": 55,
     "title": "Nanha Munna Rahi Hoon",
     "artist": "Shanti Mathur",
     "category": "Desh Bhakti",
@@ -405,7 +495,7 @@ export const songs = [
     "audio": "/music/Shanti Mathur - Nanha Munna Rahi Hoon.mp3"
   },
   {
-    "id": 46,
+    "id": 56,
     "title": "Apni Maati",
     "artist": "Shreya Ghoshal",
     "category": "Desh Bhakti",
@@ -414,7 +504,7 @@ export const songs = [
     "audio": "/music/Shreya Ghoshal - Apni Maati.mp3"
   },
   {
-    "id": 47,
+    "id": 57,
     "title": "Tujhe Namaami Ho",
     "artist": "Shreya Ghoshal",
     "category": "Desh Bhakti",
@@ -423,7 +513,16 @@ export const songs = [
     "audio": "/music/Shreya Ghoshal, Sunidhi Chauhan, KK, Rana Mazumder - Tujhe Namaami Ho.mp3"
   },
   {
-    "id": 48,
+    "id": 58,
+    "title": "Hum Hind Ke Veer - From \"Border Hindustan Ka\"",
+    "artist": "Sonu Nigam",
+    "category": "Desh Bhakti",
+    "year": "2003",
+    "cover": "/music/covers/sonu_nigam_-_hum_hind_ke_veer_-_from__border_hindustan_ka_.jpg",
+    "audio": "/music/Sonu Nigam - Hum Hind Ke Veer - From 'Border Hindustan Ka'.mp3"
+  },
+  {
+    "id": 59,
     "title": "Desh ki Mitti",
     "artist": "Sonu Nigam",
     "category": "Desh Bhakti",
@@ -432,7 +531,16 @@ export const songs = [
     "audio": "/music/Sonu Nigam, Anuradha Sriram, Javed Akhtar - Desh ki Mitti.mp3"
   },
   {
-    "id": 49,
+    "id": 60,
+    "title": "Ekla Chalo",
+    "artist": "Sonu Nigam",
+    "category": "Desh Bhakti",
+    "year": "2005",
+    "cover": "/music/covers/sonu_nigam__nachiketa_chakraborty__javed_akhtar_-_ekla_chalo.jpg",
+    "audio": "/music/Sonu Nigam, Nachiketa Chakraborty, Javed Akhtar - Ekla Chalo.mp3"
+  },
+  {
+    "id": 61,
     "title": "Sandese Aate Hai-Ke Ghar Kab Aaoge - From \"Border\"",
     "artist": "Sonu Nigam",
     "category": "Desh Bhakti",
@@ -441,7 +549,7 @@ export const songs = [
     "audio": "/music/Sonu Nigam, Roop Kumar Rathod - Sandese Aate Hai-Ke Ghar Kab Aaoge - From 'Border'.mp3"
   },
   {
-    "id": 50,
+    "id": 62,
     "title": "Bande Mein Tha Dum Vande Mataram",
     "artist": "Sonu Nigam",
     "category": "Desh Bhakti",
@@ -450,7 +558,7 @@ export const songs = [
     "audio": "/music/Sonu Nigam, Shreya Ghoshal, Pranab Biswas - Bande Mein Tha Dum Vande Mataram.mp3"
   },
   {
-    "id": 51,
+    "id": 63,
     "title": "Teri Jai Ho",
     "artist": "Soumik Sen",
     "category": "Desh Bhakti",
@@ -459,7 +567,7 @@ export const songs = [
     "audio": "/music/Soumik Sen - Teri Jai Ho.mp3"
   },
   {
-    "id": 52,
+    "id": 64,
     "title": "Bidhir Badhon",
     "artist": "Soumyojit",
     "category": "Desh Bhakti",
@@ -468,7 +576,7 @@ export const songs = [
     "audio": "/music/Soumyojit - Bidhir Badhon.mp3"
   },
   {
-    "id": 53,
+    "id": 65,
     "title": "Ruth Aa Gayee Re",
     "artist": "Sukhwinder Singh",
     "category": "Desh Bhakti",
@@ -477,7 +585,7 @@ export const songs = [
     "audio": "/music/Sukhwinder Singh - Ruth Aa Gayee Re.mp3"
   },
   {
-    "id": 54,
+    "id": 66,
     "title": "Watna Ve",
     "artist": "Sukhwinder Singh",
     "category": "Desh Bhakti",
@@ -486,7 +594,7 @@ export const songs = [
     "audio": "/music/Sukhwinder Singh - Watna Ve.mp3"
   },
   {
-    "id": 55,
+    "id": 67,
     "title": "Vandematram (From \"72 Hours\")",
     "artist": "Sukhwinder Singh",
     "category": "Desh Bhakti",
@@ -495,7 +603,16 @@ export const songs = [
     "audio": "/music/Sukhwinder Singh, Anupriya Chatterjee, Sunjoy Bose - Vandematram (From '72 Hours').mp3"
   },
   {
-    "id": 56,
+    "id": 68,
+    "title": "Saugandh Mujhe Iss Mitti Ki (From \"Pm Narendra Modi\")",
+    "artist": "Sukhwinder Singh",
+    "category": "Desh Bhakti",
+    "year": "2020",
+    "cover": "/music/covers/sukhwinder_singh__shashi_suman_-_saugandh_mujhe_iss_mitti_ki__from__pm_narendra_modi__.jpg",
+    "audio": "/music/Sukhwinder Singh, Shashi Suman - Saugandh Mujhe Iss Mitti Ki (From 'Pm Narendra Modi').mp3"
+  },
+  {
+    "id": 69,
     "title": "Saugandh Mujhe Iss Mitti Ki",
     "artist": "Sukhwinder Singh",
     "category": "Desh Bhakti",
@@ -504,7 +621,7 @@ export const songs = [
     "audio": "/music/Sukhwinder Singh, Shashi Suman - Saugandh Mujhe Iss Mitti Ki.mp3"
   },
   {
-    "id": 57,
+    "id": 70,
     "title": "Vande Mataram",
     "artist": "Tiger Shroff",
     "category": "Desh Bhakti",
@@ -513,7 +630,7 @@ export const songs = [
     "audio": "/music/Tiger Shroff, Vishal Mishra - Vande Mataram.mp3"
   },
   {
-    "id": 58,
+    "id": 71,
     "title": "Mile Sur Mera Tumhara",
     "artist": "Upendra Bhat",
     "category": "Desh Bhakti",
@@ -522,7 +639,7 @@ export const songs = [
     "audio": "/music/Upendra Bhat - Mile Sur Mera Tumhara.mp3"
   },
   {
-    "id": 59,
+    "id": 72,
     "title": "Kadam Kadam",
     "artist": "Vijay Prakash",
     "category": "Desh Bhakti",
@@ -531,7 +648,7 @@ export const songs = [
     "audio": "/music/Vijay Prakash, Mumbai Film Choir, Javed Akhtar - Kadam Kadam.mp3"
   },
   {
-    "id": 60,
+    "id": 73,
     "title": "Jaihind Ki Senaa (From \"Shershaah\")",
     "artist": "Vikram Montrose",
     "category": "Desh Bhakti",
@@ -540,12 +657,30 @@ export const songs = [
     "audio": "/music/Vikram Montrose - Jaihind Ki Senaa (From 'Shershaah').mp3"
   },
   {
-    "id": 61,
+    "id": 74,
     "title": "Jannayak",
     "artist": "Vishal Mishra",
     "category": "Desh Bhakti",
     "year": "2021",
     "cover": "/music/covers/vishal_mishra__kaushal_kishore_-_jannayak.jpg",
     "audio": "/music/Vishal Mishra, Kaushal Kishore - Jannayak.mp3"
+  },
+  {
+    "id": 75,
+    "title": "Bharat Mata Ki Jai",
+    "artist": "Vishal-Shekhar",
+    "category": "Desh Bhakti",
+    "year": "2012",
+    "cover": "/music/covers/vishal-shekhar__keerthi_sagathia__vishal_dadlani_-_bharat_mata_ki_jai.jpg",
+    "audio": "/music/Vishal-Shekhar, Keerthi Sagathia, Vishal Dadlani - Bharat Mata Ki Jai.mp3"
+  },
+  {
+    "id": 76,
+    "title": "India Waale",
+    "artist": "Vishal-Shekhar",
+    "category": "Desh Bhakti",
+    "year": "2014",
+    "cover": "/music/covers/vishal-shekhar__neeti_mohan__vishal_dadlani__kk__shankar_mahadevan__irshad_kamil_-_india_waale.jpg",
+    "audio": "/music/Vishal-Shekhar, Neeti Mohan, Vishal Dadlani, KK, Shankar Mahadevan, Irshad Kamil - India Waale.mp3"
   }
 ];

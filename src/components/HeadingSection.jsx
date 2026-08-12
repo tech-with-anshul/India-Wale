@@ -18,7 +18,7 @@ export default function HeadingSection({ cinematicMode }) {
         <h1
           className="font-hindi"
           style={{
-            fontSize: 'clamp(2.2rem, 6.8vw, 6.4rem)',
+            fontSize: 'clamp(2rem, 6vw, 5.8rem)',
             fontWeight: 900,
             color: 'rgba(255, 252, 244, 0.94)',
             letterSpacing: '-0.01em',
@@ -35,9 +35,9 @@ export default function HeadingSection({ cinematicMode }) {
         <h2
           className="font-hindi"
           style={{
-            fontSize: 'clamp(1.4rem, 4.5vw, 4.2rem)',
+            fontSize: 'clamp(1.2rem, 4vw, 3.8rem)',
             fontWeight: 600,
-            color: 'rgba(255, 243, 220, 0.72)',
+            color: 'rgba(255, 243, 220, 0.42)',
             letterSpacing: '0.06em',
             lineHeight: 1.1,
             textShadow: '0 1px 14px rgba(0,0,0,0.3)',

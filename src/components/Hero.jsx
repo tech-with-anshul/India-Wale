@@ -1,6 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
-const heroImage = '/bharat.png';
 const PARTICLE_COUNT = 26;
 
 function createParticles() {
@@ -20,21 +19,39 @@ const particles = createParticles();
 
 export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
   const bgRef = useRef(null);
+  const [litDiyas, setLitDiyas] = useState({ 0: false, 1: false, 2: false, 3: false });
 
+  // Handle background parallax (sky + monuments + river)
   useEffect(() => {
-    if (!bgRef.current) return;
-    const maxShift = 14;
-    const x = (mousePos.x - 0.5) * -maxShift;
-    const y = (mousePos.y - 0.5) * -maxShift;
-    bgRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.06)`;
+    if (bgRef.current) {
+      const maxShift = 8;
+      const x = (mousePos.x - 0.5) * -maxShift;
+      const y = (mousePos.y - 0.5) * -maxShift;
+      bgRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.04)`;
+    }
   }, [mousePos]);
+
+  // Diyas coordinates on the ghats/riverbank
+  const diyas = [
+    { bottom: '25%', left: '14%' },
+    { bottom: '21%', left: '25%' },
+    { bottom: '23%', left: '38%' },
+    { bottom: '18%', left: '47%' },
+  ];
+
+  const handleDiyaClick = (index) => {
+    setLitDiyas(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
   return (
     <div
       style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}
       aria-label="Indian Independence Day Experience"
     >
-      {/* ── Background image (moves with parallax) ── */}
+      {/* ── Background image (moves with subtle parallax) ── */}
       <div
         ref={bgRef}
         style={{
@@ -42,11 +59,12 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
           inset: '-5%',
           transition: 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           willChange: 'transform',
+          zIndex: 1,
         }}
       >
         <img
-          src={heroImage}
-          alt="Indian Independence Day — tricolor flag against a golden sunset sky"
+          src="/bharat.png"
+          alt="Indian Independence Day — background landscape"
           style={{
             width: '100%',
             height: '100%',
@@ -55,6 +73,113 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
             display: 'block',
           }}
         />
+      </div>
+
+      {/* ── River Wave Reflection Overlay (Responds to playback state) ── */}
+      <div
+        className={isPlaying ? 'river-ripple-active' : 'river-ripple-slow'}
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '32%',
+          background: 'linear-gradient(to top, rgba(255, 120, 0, 0.08) 0%, rgba(255, 160, 40, 0.03) 40%, transparent 100%)',
+          mixBlendMode: 'color-dodge',
+          pointerEvents: 'none',
+          zIndex: 2,
+          transition: 'opacity 1.5s ease',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ── Interactive Diyas Layer ── */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 4,
+          pointerEvents: 'none', // Allow clicks only on individual diyas
+        }}
+      >
+        {diyas.map((diya, index) => {
+          const isLit = litDiyas[index];
+          return (
+            <div
+              key={index}
+              style={{
+                position: 'absolute',
+                bottom: diya.bottom,
+                left: diya.left,
+                pointerEvents: 'auto',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '32px',
+                height: '32px',
+              }}
+              onClick={() => handleDiyaClick(index)}
+              title="Lit the diya"
+            >
+              {/* Diya shape / flame */}
+              <div
+                className={isPlaying ? 'diya-pulse-active' : 'diya-pulse-slow'}
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: isLit ? '#ffd060' : '#ff8800',
+                  boxShadow: isLit 
+                    ? '0 0 12px #ff8800, 0 0 24px #ff5500' 
+                    : '0 0 6px #ff8800',
+                  transition: 'all 0.5s ease',
+                }}
+              />
+
+              {/* Hover glow ring */}
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  border: '1px dashed rgba(255, 140, 0, 0.3)',
+                  opacity: 0,
+                  transition: 'all 0.3s ease',
+                  transform: 'scale(0.8)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  // Light flicker on hover
+                  const flame = e.currentTarget.parentElement.firstElementChild;
+                  if (flame) flame.style.transform = 'scale(1.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '0';
+                  e.currentTarget.style.transform = 'scale(0.8)';
+                  const flame = e.currentTarget.parentElement.firstElementChild;
+                  if (flame) flame.style.transform = 'scale(1)';
+                }}
+              />
+
+              {/* Lit glow expansion (warm radial glow expanding around the clicked diya) */}
+              <div
+                style={{
+                  position: 'absolute',
+                  width: isLit ? '180px' : '0px',
+                  height: isLit ? '180px' : '0px',
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(255, 120, 0, 0.16) 0%, rgba(255, 60, 0, 0.02) 60%, transparent 100%)',
+                  pointerEvents: 'none',
+                  transition: 'all 1.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                  zIndex: -1,
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* ── Cinematic dark gradient ── */}
@@ -72,11 +197,13 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
           )`,
           transition: 'opacity 1.2s ease',
           opacity: cinematicMode ? 0.6 : 1,
+          pointerEvents: 'none',
+          zIndex: 3,
         }}
       />
 
       {/* ── Vignette ── */}
-      <div className="vignette" style={{ position: 'absolute', inset: 0 }} />
+      <div className="vignette" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 3 }} />
 
       {/* ── Ambient playing glow ── */}
       <div
@@ -87,11 +214,12 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
           opacity: isPlaying ? 1 : 0,
           transition: 'opacity 2s ease',
           pointerEvents: 'none',
+          zIndex: 3,
         }}
       />
 
       {/* ── Grain ── */}
-      <div className="grain-overlay" />
+      <div className="grain-overlay" style={{ zIndex: 3 }} />
 
       {/* ── Cinematic light sweep (subtle warm pass across sky every ~10s) ── */}
       <div
@@ -116,6 +244,7 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
           position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none',
           transition: 'opacity 1.5s ease',
           opacity: cinematicMode ? 0.4 : 1,
+          zIndex: 5,
         }}
         aria-hidden="true"
       >

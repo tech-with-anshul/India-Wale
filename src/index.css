@@ -508,3 +508,42 @@ body {
 @media (max-width: 480px) {
   .volume-popup { display: none; }
 }
+
+/* ─────────────────────────────────────────────────
+   Diya & River Animations
+───────────────────────────────────────────────── */
+.diya-pulse-slow {
+  animation: diyaFlicker 3s ease-in-out infinite;
+}
+.diya-pulse-active {
+  animation: diyaFlickerActive 1.6s ease-in-out infinite;
+}
+
+.river-ripple-slow {
+  animation: riverWarp 4.2s ease-in-out infinite;
+}
+.river-ripple-active {
+  animation: riverWarpActive 2s ease-in-out infinite;
+}
+
+@keyframes diyaFlicker {
+  0%, 100% { transform: scale(1); opacity: 0.72; filter: drop-shadow(0 0 5px rgba(255, 140, 0, 0.5)); }
+  50% { transform: scale(1.12); opacity: 0.95; filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.85)); }
+}
+
+@keyframes diyaFlickerActive {
+  0%, 100% { transform: scale(1.02); opacity: 0.85; filter: drop-shadow(0 0 8px rgba(255, 150, 20, 0.65)); }
+  25% { transform: scale(1.22); opacity: 1; filter: drop-shadow(0 0 18px rgba(255, 180, 40, 0.95)); }
+  75% { transform: scale(0.96); opacity: 0.75; filter: drop-shadow(0 0 6px rgba(255, 110, 10, 0.55)); }
+}
+
+@keyframes riverWarp {
+  0%, 100% { opacity: 0.35; transform: scaleY(1) translateY(0); }
+  50% { opacity: 0.45; transform: scaleY(1.05) translateY(-1px); }
+}
+
+@keyframes riverWarpActive {
+  0%, 100% { opacity: 0.42; transform: scaleY(1.02) translateY(0); }
+  50% { opacity: 0.62; transform: scaleY(1.12) translateY(-2px); }
+}
+
