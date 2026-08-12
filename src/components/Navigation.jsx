@@ -1,12 +1,19 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { Aperture } from 'lucide-react';
+import { Aperture, Info, RotateCw, X } from 'lucide-react';
 
 const QUOTES = [
-  '"जहाँ विविधता है, वहीं भारत है।"',
-  '"सत्यमेव जयते।"',
-  '"एकता में शक्ति है।"',
-  '"भारत माता की जय।"',
-  '"देश के लिए मर मिटना, यही है असली ज़िंदगी।"',
+  '"स्वराज मेरा जन्मसिद्ध अधिकार है और मैं इसे लेकर रहूँगा।"\n— बाल गंगाधर तिलक',
+  '"तुम मुझे खून दो, मैं तुम्हें आज़ादी दूँगा!"\n— नेताजी सुभाष चंद्र बोस',
+  '"सारे जहाँ से अच्छा हिन्दोस्ताँ हमारा।"\n— अल्लामा इक़बाल',
+  '"इंकलाब जिंदाबाद!"\n— भगत सिंह',
+  '"सत्यमेव जयते।"\n— मदन मोहन मालवीय',
+  '"दुश्मन की गोलियों का हम सामना करेंगे, आज़ाद ही रहे हैं, आज़ाद ही रहेंगे!"\n— चन्द्रशेखर आज़ाद',
+  '"सरफरोशी की तमन्ना अब हमारे दिल में है, देखना है ज़ोर कितना बाज़ू-ए-कातिल में है।"\n— राम प्रसाद बिस्मिल',
+  '"सत्य और अहिंसा मेरा ईश्वर है।"\n— महात्मा गांधी',
+  '"जय जवान, जय किसान!"\n— लाल बहादुर शास्त्री',
+  '"करो या मरो।"\n— महात्मा गांधी',
+  '"आराम हराम है।"\n— जवाहरलाल नेहरू',
+  '"सच्चा राष्ट्रवाद दूसरों को दबाना नहीं, बल्कि सबकी स्वतंत्रता की रक्षा करना है।"\n— नेताजी सुभाष चंद्र बोस'
 ];
 
 // ── Tricolor horizontal wave ──────────────────────
@@ -58,54 +65,12 @@ function TricolorWave({ active }) {
   );
 }
 
-// ── Quote overlay ────────────────────────────────
-function QuoteOverlay({ quote, onDone }) {
-  useEffect(() => {
-    if (!quote) return;
-    const t = setTimeout(onDone, 3600);
-    return () => clearTimeout(t);
-  }, [quote, onDone]);
-
-  if (!quote) return null;
-
-  return (
-    <div className="quote-overlay" aria-live="polite">
-      <div className="quote-bg" />
-      <div className="quote-text">
-        <p
-          className="font-hindi"
-          style={{
-            fontSize: 'clamp(1.2rem, 3.5vw, 2.4rem)',
-            fontWeight: 600,
-            color: 'rgba(255, 252, 244, 0.96)',
-            textShadow: '0 2px 20px rgba(0,0,0,0.6)',
-            lineHeight: 1.5,
-            maxWidth: '640px',
-            padding: '0 24px',
-          }}
-        >
-          {quote}
-        </p>
-        <div style={{ marginTop: '18px', display: 'flex', justifyContent: 'center', gap: '6px' }}>
-          <div style={{ width: '28px', height: '3px', borderRadius: '2px', background: '#FF9933' }} />
-          <div style={{ width: '28px', height: '3px', borderRadius: '2px', background: '#f5f0e8' }} />
-          <div style={{ width: '28px', height: '3px', borderRadius: '2px', background: '#138808' }} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function Navigation({ cinematicMode, onBharatClick, onVandeClick, onCinematicToggle }) {
-  const [quote, setQuote] = useState(null);
+// ── Navigation Component ──────────────────────────
+export default function Navigation({ cinematicMode, onBharatClick, onVandeClick, onCinematicToggle, onInfoOpen }) {
   const [waveActive, setWaveActive] = useState(false);
-  const quoteIndex = useRef(0);
   const waveTimeout = useRef(null);
 
   const handleBharat = useCallback(() => {
-    const text = QUOTES[quoteIndex.current % QUOTES.length];
-    quoteIndex.current += 1;
-    setQuote(text);
     if (onBharatClick) onBharatClick();
   }, [onBharatClick]);
 
@@ -122,7 +87,6 @@ export default function Navigation({ cinematicMode, onBharatClick, onVandeClick,
 
   return (
     <>
-      <QuoteOverlay quote={quote} onDone={() => setQuote(null)} />
       <TricolorWave active={waveActive} />
 
       <nav
@@ -163,15 +127,22 @@ export default function Navigation({ cinematicMode, onBharatClick, onVandeClick,
 
           {/* Mobile-only cinematic button */}
           <button
-            className="cinematic-btn mobile-only"
-            style={{ 
-              display: 'none', // Overridden in index.css for mobile
-            }}
+            className="cinematic-btn inline-flex md:hidden"
             onClick={onCinematicToggle}
             aria-label={cinematicMode ? 'Exit cinematic mode' : 'Enter cinematic mode'}
             title={cinematicMode ? 'Exit cinematic mode (Alt+C)' : 'Cinematic mode (Alt+C)'}
           >
             <Aperture size={15} />
+          </button>
+
+          {/* Mobile-only info button */}
+          <button
+            className="cinematic-btn inline-flex md:hidden"
+            onClick={onInfoOpen}
+            aria-label="Open Info & Playlists"
+            title="Info & Playlists"
+          >
+            <Info size={15} />
           </button>
         </div>
       </nav>

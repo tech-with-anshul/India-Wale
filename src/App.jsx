@@ -1,11 +1,27 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Aperture } from 'lucide-react';
+import { Aperture, Info } from 'lucide-react';
 import { songs } from './data/songs';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import HeadingSection from './components/HeadingSection';
 import MusicPlayer from './components/MusicPlayer';
 import MusicPlaylist from './components/MusicPlaylist';
+import InfoModal from './components/InfoModal';
+
+const QUOTES = [
+  '"स्वराज मेरा जन्मसिद्ध अधिकार है और मैं इसे लेकर रहूँगा।"\n— बाल गंगाधर तिलक',
+  '"तुम मुझे खून दो, मैं तुम्हें आज़ादी दूँगा!"\n— नेताजी सुभाष चंद्र बोस',
+  '"सारे जहाँ से अच्छा हिन्दोस्ताँ हमारा।"\n— अल्लामा इक़बाल',
+  '"इंकलाब जिंदाबाद!"\n— भगत सिंह',
+  '"सत्यमेव जयते।"\n— मदन मोहन मालवीय',
+  '"दुश्मन की गोलियों का हम सामना करेंगे, आज़ाद ही रहे हैं, आज़ाद ही रहेंगे!"\n— चन्द्रशेखर आज़ाद',
+  '"सरफरोशी की तमन्ना अब हमारे दिल में है, देखना है ज़ोर कितना बाज़ू-ए-कातिल में है।"\n— राम प्रसाद बिस्मिल',
+  '"सत्य और अहिंसा मेरा ईश्वर है।"\n— महात्मा गांधी',
+  '"जय जवान, जय किसान!"\n— लाल बहादुर शास्त्री',
+  '"करो या मरो।"\n— महात्मा गांधी',
+  '"आराम हराम है।"\n— जवाहरलाल नेहरू',
+  '"सच्चा राष्ट्रवाद दूसरों को दबाना नहीं, बल्कि सबकी स्वतंत्रता की रक्षा करना है।"\n— नेताजी सुभाष चंद्र बोस'
+];
 
 export default function App() {
   // ── Core state ─────────────────────────────────
@@ -19,9 +35,15 @@ export default function App() {
 
   // ── Experience state ───────────────────────────
   const [cinematicMode, setCinematicMode] = useState(false);
+  const [infoOpen, setInfoOpen]           = useState(false);
   const [mousePos, setMousePos]           = useState({ x: 0.5, y: 0.5 });
+  const [quoteIndex, setQuoteIndex]       = useState(0);
 
   const audioRef = useRef(null);
+
+  const handleNextQuote = useCallback(() => {
+    setQuoteIndex((prev) => (prev + 1) % QUOTES.length);
+  }, []);
 
   // ── Load song when currentSong changes ─────────
   useEffect(() => {
@@ -142,7 +164,7 @@ export default function App() {
   }, [handlePlayPause, handleNext, handlePrev]);
 
   return (
-    <>
+    <div style={{ width: '100%', height: '100dvh', overflow: 'hidden', position: 'relative' }}>
       <audio ref={audioRef} preload="metadata" />
 
       <Hero mousePos={mousePos} isPlaying={isPlaying} cinematicMode={cinematicMode} playlistOpen={playlistOpen}>
@@ -150,7 +172,9 @@ export default function App() {
         {/* Navigation with interactive buttons */}
         <Navigation 
           cinematicMode={cinematicMode} 
+          onBharatClick={handleNextQuote}
           onCinematicToggle={() => setCinematicMode(m => !m)}
+          onInfoOpen={() => setInfoOpen(true)}
         />
 
         {/* Hindi heading — right-center, dims when playlist is open to protect title */}
@@ -167,9 +191,9 @@ export default function App() {
           />
         </div>
 
-        {/* "Feel the Pride" — clickable, triggers same tricolor wave as Navigation */}
+        {/* "Feel the Pride" — clickable, triggers same tricolor wave as Navigation (desktop only) */}
         <div
-          className={`animate-fadeIn delay-1600 opacity-0 ui-element ${cinematicMode ? 'cinematic' : ''}`}
+          className={`animate-fadeIn delay-1600 opacity-0 ui-element hidden md:block ${cinematicMode ? 'cinematic' : ''}`}
           style={{
             position: 'absolute',
             bottom: '32px',
@@ -194,8 +218,8 @@ export default function App() {
             }}
           >
             <span style={{
-              fontFamily: "'Inter',sans-serif",
-              fontSize: '10px',
+              fontFamily: 'var(--font-english)',
+              fontSize: '11px',
               fontWeight: 500,
               color: 'rgba(255,255,255,0.32)',
               letterSpacing: '0.28em',
@@ -210,9 +234,9 @@ export default function App() {
           </button>
         </div>
 
-        {/* Cinematic mode toggle — bottom right */}
+        {/* Cinematic mode toggle — bottom right (desktop only) */}
         <div
-          className="animate-fadeIn delay-1600 opacity-0"
+          className="animate-fadeIn delay-1600 opacity-0 hidden md:block"
           style={{
             position: 'absolute',
             bottom: '28px',
@@ -230,6 +254,30 @@ export default function App() {
             title={cinematicMode ? 'Exit cinematic mode (Alt+C)' : 'Cinematic mode (Alt+C)'}
           >
             <Aperture size={16} />
+          </button>
+        </div>
+
+        {/* Info & Playlists toggle button — bottom right (desktop only, hidden in cinematic mode) */}
+        <div
+          className="animate-fadeIn delay-1600 opacity-0 hidden md:block"
+          style={{
+            position: 'absolute',
+            bottom: '28px',
+            right: cinematicMode ? '50%' : '72px',
+            transform: cinematicMode ? 'translateX(50%)' : 'none',
+            zIndex: 70,
+            transition: 'right 0.9s ease, transform 0.9s ease',
+            display: cinematicMode ? 'none' : 'block'
+          }}
+        >
+          <button
+            id="info-mode-btn"
+            className="cinematic-btn"
+            onClick={() => setInfoOpen(true)}
+            aria-label="Open Info & Spotify playlists"
+            title="Info & Playlists"
+          >
+            <Info size={16} />
           </button>
         </div>
 
@@ -254,6 +302,8 @@ export default function App() {
           shuffle={shuffle}
           playlistOpen={playlistOpen}
           cinematicMode={cinematicMode}
+          quote={QUOTES[quoteIndex]}
+          onNextQuote={handleNextQuote}
           onPlayPause={handlePlayPause}
           onPrev={handlePrev}
           onNext={handleNext}
@@ -263,6 +313,9 @@ export default function App() {
           onPlaylistToggle={() => setPlaylistOpen((o) => !o)}
         />
       </Hero>
-    </>
+
+      {/* Info, Playlists & Copyright Notice Overlay Modal */}
+      <InfoModal isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useMemo } from 'react';
 import {
   Play, Pause, SkipBack, SkipForward,
-  Shuffle, ListMusic, Volume2, VolumeX,
+  Shuffle, ListMusic, Volume2, VolumeX, RotateCw
 } from 'lucide-react';
 
 // ── Decorative waveform — 30 elegant bars ────────────────
@@ -98,6 +98,8 @@ export default function MusicPlayer({
   shuffle,
   playlistOpen,
   cinematicMode,
+  quote,
+  onNextQuote,
   onPlayPause,
   onPrev,
   onNext,
@@ -125,7 +127,57 @@ export default function MusicPlayer({
   }
 
   return (
-    <div className="music-player-wrapper">
+    <div className={`music-player-wrapper ${playlistOpen ? 'playlist-active' : ''}`}>
+      {/* Landing page quote display - Always visible above player, hidden in cinematic mode */}
+      {!cinematicMode && quote && (
+        <div 
+          className="animate-fadeIn delay-1000 opacity-0"
+          style={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            marginBottom: '16px',
+            padding: '0 8px',
+          }}
+        >
+          <span
+            className="font-hindi"
+            style={{
+              fontSize: 'clamp(0.95rem, 2.5vw, 1.25rem)',
+              fontWeight: 500,
+              color: 'rgba(255, 252, 244, 0.96)',
+              textShadow: '0 2px 8px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.95)',
+              textAlign: 'center',
+              lineHeight: 1.45,
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {quote}
+          </span>
+          <button
+            onClick={onNextQuote}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'rgba(255,153,51,0.85)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '4px',
+              transition: 'all 0.24s ease',
+            }}
+            title="नया विचार / Next Quote"
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#FF9933'; e.currentTarget.style.transform = 'rotate(45deg)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,153,51,0.85)'; e.currentTarget.style.transform = 'rotate(0deg)'; }}
+          >
+            <RotateCw size={13} />
+          </button>
+        </div>
+      )}
+
       <div className="animate-slideUp delay-1400 opacity-0" style={{ width: '100%' }}>
         <div
           id="music-player"
@@ -143,20 +195,67 @@ export default function MusicPlayer({
         {/* ── Top: artwork + song info + eq ── */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
 
-          {/* Album art */}
-          <div style={{
-            width: '48px', height: '48px', borderRadius: '10px', overflow: 'hidden',
-            flexShrink: 0, border: '1.5px solid rgba(255,153,51,0.25)',
-            boxShadow: '0 3px 12px rgba(0,0,0,0.4)',
-            background: 'linear-gradient(135deg, #FF9933 0%, #FF9933 33%, #fff 33%, #fff 66%, #138808 66%)',
-          }}>
-            <img
-              src={currentSong.cover}
-              alt={`Album art for ${currentSong.title}`}
-              className={isPlaying ? 'artwork-playing' : ''}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', transformOrigin: 'center' }}
-              onError={(e) => { e.currentTarget.style.display = 'none'; }}
-            />
+          {/* Album art container with Ashok Chakra background collar */}
+          <div style={{ position: 'relative', width: '48px', height: '48px', flexShrink: 0 }}>
+            {/* Rotating Ashok Chakra behind art */}
+            <div style={{
+              width: '60px',
+              height: '60px',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}>
+              <svg
+                viewBox="0 0 100 100"
+                className={isPlaying ? 'chakra-spin-active' : 'chakra-spin-slow'}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  display: 'block',
+                  opacity: 0.72,
+                  filter: isPlaying ? 'drop-shadow(0 0 6px rgba(0, 0, 128, 0.55))' : 'none',
+                  transition: 'all 0.8s ease',
+                }}
+              >
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0, 0, 128, 0.85)" strokeWidth="3.5" />
+                <circle cx="50" cy="50" r="8" fill="none" stroke="rgba(0, 0, 128, 0.85)" strokeWidth="2.5" />
+                {Array.from({ length: 24 }).map((_, i) => {
+                  const angle = (i * 360) / 24;
+                  const rad = (angle * Math.PI) / 180;
+                  return (
+                    <line
+                      key={i}
+                      x1="50"
+                      y1="50"
+                      x2={50 + 45 * Math.cos(rad)}
+                      y2={50 + 45 * Math.sin(rad)}
+                      stroke="rgba(0, 0, 128, 0.85)"
+                      strokeWidth="1.2"
+                    />
+                  );
+                })}
+              </svg>
+            </div>
+
+            {/* Circular Album Artwork on top */}
+            <div style={{
+              width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden',
+              position: 'relative', zIndex: 2, border: '1.5px solid rgba(255,153,51,0.25)',
+              boxShadow: '0 3px 12px rgba(0,0,0,0.4)',
+              background: 'linear-gradient(135deg, #FF9933 0%, #FF9933 33%, #fff 33%, #fff 66%, #138808 66%)',
+              width: '100%', height: '100%',
+            }}>
+              <img
+                src={currentSong.cover}
+                alt={`Album art for ${currentSong.title}`}
+                className={isPlaying ? 'artwork-playing' : ''}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', transformOrigin: 'center' }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+            </div>
           </div>
 
           {/* Song info */}
@@ -164,14 +263,14 @@ export default function MusicPlayer({
             <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '3px' }}>
               {isPlaying && <Equalizer isPlaying={isPlaying} />}
               <p style={{
-                fontFamily: "'Inter',sans-serif", fontWeight: 600, fontSize: '13px',
+                fontFamily: 'var(--font-english)', fontWeight: 600, fontSize: '13px',
                 color: 'white', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               }}>
                 {currentSong.title}
               </p>
             </div>
             <p style={{
-              fontFamily: "'Inter',sans-serif", fontSize: '11px',
+              fontFamily: 'var(--font-english)', fontSize: '11px',
               color: 'rgba(255,255,255,0.45)',
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
             }}>
@@ -221,10 +320,10 @@ export default function MusicPlayer({
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontFamily: "'Inter',sans-serif" }}>
+            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-english)' }}>
               {formatTime(progress)}
             </span>
-            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontFamily: "'Inter',sans-serif" }}>
+            <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-english)' }}>
               {formatTime(duration)}
             </span>
           </div>
@@ -263,7 +362,7 @@ export default function MusicPlayer({
                     onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
                     aria-label="Volume"
                   />
-                  <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontFamily: "'Inter',sans-serif", minWidth: '24px' }}>
+                  <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-english)', minWidth: '24px' }}>
                     {Math.round(volume * 100)}
                   </span>
                 </div>
