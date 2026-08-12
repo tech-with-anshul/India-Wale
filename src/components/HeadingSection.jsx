@@ -1,7 +1,7 @@
-export default function HeadingSection({ cinematicMode }) {
+export default function HeadingSection({ cinematicMode, onFeelPride }) {
   return (
     <div
-      className="ui-element"
+      className="ui-element heading-container"
       style={{
         position: 'absolute',
         right: '5%',
@@ -37,10 +37,10 @@ export default function HeadingSection({ cinematicMode }) {
           style={{
             fontSize: 'clamp(1.2rem, 4vw, 3.8rem)',
             fontWeight: 600,
-            color: 'rgba(255, 243, 220, 0.42)',
+            color: 'rgba(255, 243, 220, 0.78)',
             letterSpacing: '0.06em',
             lineHeight: 1.1,
-            textShadow: '0 1px 14px rgba(0,0,0,0.3)',
+            textShadow: '0 4px 20px rgba(0,0,0,0.65)',
           }}
         >
           मेरी शान
@@ -49,7 +49,7 @@ export default function HeadingSection({ cinematicMode }) {
 
       {/* Divider */}
       <div
-        className="animate-fadeIn delay-1000 opacity-0"
+        className="animate-fadeIn delay-1000 opacity-0 heading-divider"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -69,12 +69,44 @@ export default function HeadingSection({ cinematicMode }) {
           style={{
             fontSize: 'clamp(0.7rem, 1.4vw, 0.95rem)',
             fontWeight: 400,
-            color: 'rgba(255,255,255,0.42)',
+            color: 'rgba(255,255,255,0.75)',
             letterSpacing: '0.22em',
+            textShadow: '0 2px 10px rgba(0,0,0,0.6)',
           }}
         >
           एक देश &bull; एक दिल &bull; एक तिरंगा
         </p>
+      </div>
+
+      {/* Mobile-only interactive Feel the Pride button */}
+      <div 
+        className="mobile-only animate-fadeIn delay-1400 opacity-0"
+        style={{ 
+          marginTop: '16px', 
+          display: 'none', // Overridden in index.css for mobile
+          justifyContent: 'center',
+          pointerEvents: 'auto'
+        }}
+      >
+        <button
+          onClick={onFeelPride}
+          style={{
+            background: 'rgba(255, 153, 51, 0.12)',
+            border: '1px solid rgba(255, 153, 51, 0.3)',
+            borderRadius: '20px',
+            padding: '6px 16px',
+            cursor: 'pointer',
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '11px',
+            fontWeight: 500,
+            color: '#FF9933',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            boxShadow: '0 4px 12px rgba(255, 153, 51, 0.15)',
+          }}
+        >
+          Feel the Pride ›
+        </button>
       </div>
     </div>
   );

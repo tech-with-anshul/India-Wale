@@ -145,14 +145,26 @@ export default function App() {
     <>
       <audio ref={audioRef} preload="metadata" />
 
-      <Hero mousePos={mousePos} isPlaying={isPlaying} cinematicMode={cinematicMode}>
+      <Hero mousePos={mousePos} isPlaying={isPlaying} cinematicMode={cinematicMode} playlistOpen={playlistOpen}>
 
         {/* Navigation with interactive buttons */}
-        <Navigation cinematicMode={cinematicMode} />
+        <Navigation 
+          cinematicMode={cinematicMode} 
+          onCinematicToggle={() => setCinematicMode(m => !m)}
+        />
 
-        {/* Hindi heading — right-center */}
-        <div className={`ui-element ${cinematicMode ? 'cinematic' : ''}`}>
-          <HeadingSection cinematicMode={cinematicMode} />
+        {/* Hindi heading — right-center, dims when playlist is open to protect title */}
+        <div 
+          className={`ui-element ${cinematicMode ? 'cinematic' : ''}`}
+          style={{ 
+            opacity: playlistOpen ? 0.38 : 1, 
+            transition: 'opacity 0.6s ease' 
+          }}
+        >
+          <HeadingSection 
+            cinematicMode={cinematicMode} 
+            onFeelPride={() => document.getElementById('vande-mataram-btn')?.click()}
+          />
         </div>
 
         {/* "Feel the Pride" — clickable, triggers same tricolor wave as Navigation */}
@@ -226,7 +238,10 @@ export default function App() {
           songs={songs}
           currentSong={currentSong}
           isOpen={playlistOpen && !cinematicMode}
+          progress={progress}
+          duration={duration}
           onSelectSong={handleSongSelect}
+          onClose={() => setPlaylistOpen(false)}
         />
 
         {/* Music player */}

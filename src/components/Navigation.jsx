@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
+import { Aperture } from 'lucide-react';
 
 const QUOTES = [
   '"जहाँ विविधता है, वहीं भारत है।"',
@@ -95,7 +96,7 @@ function QuoteOverlay({ quote, onDone }) {
   );
 }
 
-export default function Navigation({ cinematicMode, onBharatClick, onVandeClick }) {
+export default function Navigation({ cinematicMode, onBharatClick, onVandeClick, onCinematicToggle }) {
   const [quote, setQuote] = useState(null);
   const [waveActive, setWaveActive] = useState(false);
   const quoteIndex = useRef(0);
@@ -149,8 +150,8 @@ export default function Navigation({ cinematicMode, onBharatClick, onVandeClick 
           </button>
         </div>
 
-        {/* Right — वंदे मातरम् */}
-        <div className="animate-slideInRight delay-400 opacity-0">
+        {/* Right — वंदे मातरम् & Aperture (for mobile) */}
+        <div className="animate-slideInRight delay-400 opacity-0" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <button
             id="vande-mataram-btn"
             className="pill-btn font-hindi"
@@ -158,6 +159,19 @@ export default function Navigation({ cinematicMode, onBharatClick, onVandeClick 
             aria-label="वंदे मातरम् — click for tricolor celebration"
           >
             <span>वंदे मातरम्</span>
+          </button>
+
+          {/* Mobile-only cinematic button */}
+          <button
+            className="cinematic-btn mobile-only"
+            style={{ 
+              display: 'none', // Overridden in index.css for mobile
+            }}
+            onClick={onCinematicToggle}
+            aria-label={cinematicMode ? 'Exit cinematic mode' : 'Enter cinematic mode'}
+            title={cinematicMode ? 'Exit cinematic mode (Alt+C)' : 'Cinematic mode (Alt+C)'}
+          >
+            <Aperture size={15} />
           </button>
         </div>
       </nav>

@@ -1,44 +1,46 @@
-import { Music2 } from 'lucide-react';
+import { Music2, X } from 'lucide-react';
 
-export default function MusicPlaylist({ songs, currentSong, isOpen, onSelectSong }) {
+export default function MusicPlaylist({ songs, currentSong, isOpen, progress, duration, onSelectSong, onClose }) {
+  const activePercent = duration ? (progress / duration) * 100 : 0;
+
   return (
     <div
       id="playlist-panel"
       className={`playlist-panel glass ${isOpen ? 'open' : 'closed'}`}
-      style={{
-        position: 'absolute',
-        right: '24px',
-        bottom: '28px',
-        width: 'min(310px, calc(100vw - 56px))',
-        borderRadius: '16px',
-        padding: '14px 12px',
-        maxHeight: '380px',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 55,
-      }}
+      style={{}}
       role="region"
       aria-label="Song playlist"
       aria-hidden={!isOpen}
     >
       {/* Header */}
       <div style={{
-        display: 'flex', alignItems: 'center', gap: '7px',
-        marginBottom: '10px', paddingBottom: '9px',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        display: 'flex', alignItems: 'center', gap: '6px',
+        marginBottom: '8px', paddingBottom: '7px',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
         flexShrink: 0,
+        width: '100%'
       }}>
-        <Music2 size={13} color="rgba(255,153,51,0.85)" />
+        <Music2 size={12} color="rgba(255,153,51,0.85)" />
         <span style={{
-          fontFamily: "'Inter',sans-serif", fontSize: '10px', fontWeight: 700,
+          fontFamily: "'Inter',sans-serif", fontSize: '9.5px', fontWeight: 700,
           letterSpacing: '0.18em', color: 'rgba(255,153,51,0.85)', textTransform: 'uppercase',
+          flex: 1
         }}>
-          Desh Bhakti
+          Desh Bhakti &bull; {songs.length} Songs
         </span>
-        <span style={{ marginLeft: 'auto', fontSize: '10px', color: 'rgba(255,255,255,0.25)', fontFamily: "'Inter',sans-serif" }}>
-          {songs.length} songs
-        </span>
+        <button
+          onClick={onClose}
+          style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: 'rgba(255,255,255,0.4)', padding: '2px', display: 'flex',
+            alignItems: 'center', justifyContent: 'center', borderRadius: '50%'
+          }}
+          aria-label="Close playlist"
+          onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.4)'; }}
+        >
+          <X size={13} />
+        </button>
       </div>
 
       {/* Song list */}
@@ -50,50 +52,108 @@ export default function MusicPlaylist({ songs, currentSong, isOpen, onSelectSong
               key={song.id}
               id={`song-item-${song.id}`}
               className={`song-item ${isActive ? 'active' : ''}`}
+              style={{
+                width: '100%',
+                border: 'none',
+                textAlign: 'left',
+                padding: isActive ? '8px 10px' : '6px 8px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2px',
+                boxShadow: isActive ? 'inset 0 1px 0 rgba(255,153,51,0.08)' : 'none',
+              }}
               onClick={() => onSelectSong(song)}
               role="option"
               aria-selected={isActive}
               aria-label={`${song.title} by ${song.artist}`}
             >
-              {/* Number / active eq */}
-              <div style={{ width: '24px', flexShrink: 0, textAlign: 'center' }}>
+              {/* Row 1: Title + EQ/Year */}
+              <div style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '8px' }}>
+                <span style={{
+                  fontSize: '9.5px',
+                  fontWeight: 500,
+                  color: isActive ? 'rgba(255,153,51,0.7)' : 'rgba(255,255,255,0.18)',
+                  fontFamily: "'Inter',sans-serif",
+                  minWidth: '16px'
+                }}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                <span style={{
+                  fontSize: '11.5px',
+                  fontWeight: isActive ? 600 : 500,
+                  color: isActive ? 'white' : 'rgba(255,255,255,0.7)',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  flex: 1,
+                  fontFamily: "'Inter',sans-serif",
+                }}>
+                  {song.title}
+                </span>
+
                 {isActive ? (
-                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1px', height: '14px', justifyContent: 'center' }}>
+                  /* Mini animated Equalizer */
+                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1px', height: '10px', flexShrink: 0 }}>
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="eq-bar" style={{ background: '#FF9933', width: '2px' }} />
+                      <div
+                        key={i}
+                        className="eq-bar"
+                        style={{
+                          background: '#FF9933',
+                          width: '1.8px',
+                          animationDuration: i === 1 ? '0.7s' : i === 2 ? '0.5s' : '0.9s'
+                        }}
+                      />
                     ))}
                   </div>
                 ) : (
-                  <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.25)', fontFamily: "'Inter',sans-serif" }}>
-                    {String(index + 1).padStart(2, '0')}
+                  <span style={{
+                    flexShrink: 0,
+                    fontSize: '9px',
+                    color: 'rgba(255,255,255,0.18)',
+                    fontFamily: "'Inter',sans-serif"
+                  }}>
+                    {song.year}
                   </span>
                 )}
               </div>
 
-              {/* Info */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{
-                  fontSize: '12px', fontWeight: isActive ? 600 : 500,
-                  color: isActive ? 'white' : 'rgba(255,255,255,0.7)',
-                  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+              {/* Row 2: Artist */}
+              <div style={{ display: 'flex', alignItems: 'center', width: '100%', paddingLeft: '24px' }}>
+                <span style={{
+                  fontSize: '10px',
+                  color: isActive ? 'rgba(255,153,51,0.65)' : 'rgba(255,255,255,0.3)',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  flex: 1,
                   fontFamily: "'Inter',sans-serif",
                 }}>
-                  {song.title}
-                </p>
-                <p style={{
-                  fontSize: '10px',
-                  color: isActive ? 'rgba(255,153,51,0.75)' : 'rgba(255,255,255,0.3)',
-                  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-                  fontFamily: "'Inter',sans-serif", marginTop: '1px',
-                }}>
                   {song.artist}
-                </p>
+                </span>
               </div>
 
-              {/* Year */}
-              <span style={{ flexShrink: 0, fontSize: '9px', color: 'rgba(255,255,255,0.2)', fontFamily: "'Inter',sans-serif" }}>
-                {song.year}
-              </span>
+              {/* Row 3: Tiny Active Progress Bar */}
+              {isActive && (
+                <div style={{ width: '100%', paddingLeft: '24px', marginTop: '4px' }}>
+                  <div style={{
+                    height: '2px',
+                    background: 'rgba(255,255,255,0.08)',
+                    borderRadius: '2px',
+                    width: '100%',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}>
+                    <div style={{
+                      height: '100%',
+                      background: 'linear-gradient(90deg, #FF9933, #FFB347)',
+                      width: `${activePercent}%`,
+                      transition: 'width 0.25s linear'
+                    }} />
+                  </div>
+                </div>
+              )}
             </button>
           );
         })}

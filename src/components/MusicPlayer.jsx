@@ -185,7 +185,8 @@ export default function MusicPlayer({
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
             }}>
               {currentSong.artist}
-              <span style={{ marginLeft: '8px', color: 'rgba(255,153,51,0.65)', fontSize: '10px' }}>
+              <span style={{ margin: '0 6px', color: 'rgba(255,255,255,0.25)' }}>&bull;</span>
+              <span style={{ color: 'rgba(255,153,51,0.65)', fontSize: '10px' }}>
                 {currentSong.category}
               </span>
             </p>

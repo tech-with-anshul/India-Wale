@@ -17,7 +17,7 @@ function createParticles() {
 
 const particles = createParticles();
 
-export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
+export default function Hero({ mousePos, isPlaying, cinematicMode, playlistOpen, children }) {
   const bgRef = useRef(null);
   const [litDiyas, setLitDiyas] = useState({ 0: false, 1: false, 2: false, 3: false });
 
@@ -199,6 +199,19 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, children }) {
           opacity: cinematicMode ? 0.6 : 1,
           pointerEvents: 'none',
           zIndex: 3,
+        }}
+      />
+
+      {/* ── Playlist Open Darken Overlay (darkens background by ~10%) ── */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(0, 0, 0, 0.22)',
+          opacity: (playlistOpen && !cinematicMode) ? 1 : 0,
+          transition: 'opacity 0.6s ease',
+          pointerEvents: 'none',
+          zIndex: 35, // sits between bg components and content UI
         }}
       />
 
