@@ -126,7 +126,6 @@ export default function MusicPlayer({
 
   return (
     <div
-      className="animate-slideUp delay-1400 opacity-0"
       style={{
         position: 'absolute',
         bottom: '28px',
@@ -136,9 +135,10 @@ export default function MusicPlayer({
         zIndex: 60,
       }}
     >
-      <div
-        id="music-player"
-        className={`glass ${isPlaying ? 'glow-playing' : ''}`}
+      <div className="animate-slideUp delay-1400 opacity-0" style={{ width: '100%' }}>
+        <div
+          id="music-player"
+          className={`glass ${isPlaying ? 'glow-playing' : ''}`}
         style={{
           borderRadius: '18px',
           padding: '14px 16px 10px',
@@ -322,5 +322,6 @@ export default function MusicPlayer({
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }

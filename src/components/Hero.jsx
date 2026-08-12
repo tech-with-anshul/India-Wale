@@ -62,17 +62,20 @@ export default function Hero({ mousePos, isPlaying, cinematicMode, playlistOpen,
           zIndex: 1,
         }}
       >
-        <img
-          src="/bharat.png"
-          alt="Indian Independence Day — background landscape"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            display: 'block',
-          }}
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/bharat-phn.png" />
+          <img
+            src="/bharat.png"
+            alt="Indian Independence Day — background landscape"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              display: 'block',
+            }}
+          />
+        </picture>
       </div>
 
       {/* ── River Wave Reflection Overlay (Responds to playback state) ── */}
